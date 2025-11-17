@@ -63,7 +63,7 @@ def add_commands(up: Updater) -> None:
         BotCommand("regolamentodidattico", "lista dei regolamenti didattici"),
         BotCommand("ricevimenti", "lista orari ricevimenti dei professori"),
         BotCommand("syllabus", "lista e informazioni pe rogni materia di ogni corso di laurea"), 
-        BotCommand("trasporto_urbano_unict", "link orari BRTU"),
+        BotCommand("trasporto_urbano_unict", "link orari Metro Shuttle FCE"),
         BotCommand("dmi_3d", "mappa in 3D del DMI"),
         BotCommand("mercatino", "bot per la vendita e l'acquisto di libri"),
         BotCommand("faq", "mostra le domande chieste più frequentemente"),
