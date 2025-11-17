@@ -23,7 +23,8 @@ from module.job_updater import updater_lep
 from module.shared import config_map
 from module.utils.multi_lang_utils import load_translations, get_regex_multi_lang
 from module.debug import error_handler, log_message
-
+from webapp.app import app
+import uvicorn
 
 def add_commands(up: Updater) -> None:
     """Adds the list of commands with their description to the bot
@@ -48,6 +49,7 @@ def add_commands(up: Updater) -> None:
         BotCommand("urp", "URP"),
         BotCommand("mensa", "orari e menù della mensa"),
         BotCommand("biblioteca", "orari della biblioteca"),
+        BotCommand("aule_studio", "tutta la descrizione qui"),
         BotCommand("drive", "accedi alla cartella Drive"),
         BotCommand("drive_contribute", "ottieni i permessi per caricare materiale sulla cartella Drive"),
         BotCommand("git", "accedi al materiale didattico su GitLab"),
@@ -97,6 +99,7 @@ def add_handlers(dp: Dispatcher) -> None:
     dp.add_handler(CommandHandler('ufficioersu', informative_callback))
     dp.add_handler(CommandHandler('urp', informative_callback))
     dp.add_handler(CommandHandler('biblioteca', informative_callback))
+    dp.add_handler(CommandHandler('aule_studio', informative_callback))
     dp.add_handler(CommandHandler('gruppi', informative_callback))
     dp.add_handler(CommandHandler('cus', informative_callback))
     dp.add_handler(CommandHandler('ricevimenti', informative_callback))
@@ -195,6 +198,7 @@ def main() -> None:
     add_jobs(updater.dispatcher)
 
     updater.start_polling()
+    uvicorn.run(app, host="0.0.0.0", port=8000)
     updater.idle()
 
 
